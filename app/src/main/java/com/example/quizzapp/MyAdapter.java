@@ -1,6 +1,7 @@
 package com.example.quizzapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,6 +36,13 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.textView.setText(textArraylist.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,MainActivity2.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -44,10 +53,12 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView, textView2;
+        TextView textView;
+        CardView cardView;
          public MyViewHolder(@NonNull View itemView) {
              super(itemView);
              textView=itemView.findViewById(R.id.quiz_name);
+             cardView=itemView.findViewById(R.id.card_quiz);
 
          }
      }
